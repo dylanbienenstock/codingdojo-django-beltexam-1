@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<h1>Welcome!</h1>
+	
+	<div class="column" style="margin-left: 35px">
+		<div class="form-box">
+			<h1>Registration</h1>
+
+			<div class="column">
+				<label for="registration-real-name">Name:</label>
+				<label for="registration-user-name">Username:</label>
+				<label for="password">Password:</label>
+				<label for="confirm-password">Confirm password:</label>
+			</div>
+
+			<div class="column">
+				<form action="/register" method="post">
+					{% csrf_token %}
+					
+					<input type="text" id="registration-real-name" name="real_name">
+					<input type="text" id="registration-user-name" name="user_name">
+					<input type="password" id="registration-password" name="password">
+					<input type="password" id="registration-confirm-password" name="confirm_password">
+					<p>* Password must be at least 8 characters</p> 
+
+					<input type="submit" value="Register">
+				</form>
+			</div>
+		</div>
+
+		<div class="errors">
+			{% if not success and response_type == "registration" %}
+				{% for error in errors %}
+					<p>&bull;&nbsp;{{error}}</p>
+				{% endfor %}
+			{% endif %}
+		</div>
+	</div>
+
+	<div class="column" style="margin-left: 25px">
+		<div class="form-box">
+			<h1>Login</h1>
+
+			<div class="column">
+				<label for="login-user-name">Username:</label>
+				<label for="login-password">Password:</label>
+			</div>
+
+			<div class="column">
+				<form action="/login" method="post">
+					{% csrf_token %}
+
+					<input type="text" id="login-user-name" name="user_name">
+					<input type="password" id="login-password" name="password">
+
+					<input type="submit" value="Login">
+				</form>
+			</div>
+		</div>
+
+		<div class="errors">
+			{% if not success and response_type == "login" %}
+				{% for error in errors %}
+					<p>&bull;&nbsp;{{error}}</p>
+				{% endfor %}
+			{% endif %}
+		</div>
+	</div>
+{% endblock %}

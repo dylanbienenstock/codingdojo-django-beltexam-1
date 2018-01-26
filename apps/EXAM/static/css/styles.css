@@ -1,0 +1,78 @@
+body {
+	padding: 0;
+	margin: 0;
+}
+
+h1, h2 {
+	margin-top: 0;
+}
+
+.column {
+	display: inline-block;
+	vertical-align: top;
+	text-align: right;
+}
+
+.column:last-child {
+	margin-left: 8px;
+}
+
+.column > h1 {
+	text-align: initial;
+}
+
+label {
+	display: block;
+	margin-bottom: 13px;
+}
+
+input[type=text], input[type=password] {
+	display: block;
+	margin-bottom: 10px;
+}
+
+input[type=submit] {
+	margin-top: 16px;
+}
+
+.form-box {
+	text-align: left;
+	border: 3px solid black;
+	padding: 25px;
+}
+
+.errors {
+	text-align: center;
+	margin-top: 32px;
+	color: darkred;
+}
+
+#full-page {
+	width: 100%;
+	display: flex;
+	flex-flow: row nowrap;
+}
+
+#full-page > .column {
+	flex: 1 1;
+}
+
+#navbar {
+	border-bottom: 2px solid black;
+	width: 100%;
+	padding: 8px;
+	box-sizing: border-box;
+}
+
+#content {
+	padding: 20px;
+}
+
+#add-trip-form-box {
+	display: inline-block;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}

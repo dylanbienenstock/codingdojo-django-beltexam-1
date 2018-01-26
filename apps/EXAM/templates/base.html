@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		{% load static %}
+
+		<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+	</head>
+
+	<body>
+		{% if user_name %}
+			<div id="navbar">
+				<span>Welcome, {{user_name}}</span>
+				<span style="float: right; margin-right: 8px;"> <!-- Sorry for the inline styling -->
+					<a href="/travels" style="margin-right: 16px;">Home</a>
+					<a href="/logout">Log out</a>
+				</span>
+			</div>
+		{% endif %}
+
+		<div id="content">
+			{% block content %} {% endblock %}
+		</div>
+	</body>
+</html>

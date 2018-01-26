@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<h1>Your Trip Schedules</h1>
+
+	{% if your_trips %}
+		<table cellpadding="10">
+			<tr>
+				<th>Destination</th>
+				<th>Travel Start Date</th> 
+				<th>Travel End Date</th>
+				<th>Plan</th>
+			</tr>
+
+			{% for trip in your_trips %}
+				<tr>
+					<td><a href="travels/destination/{{trip.id}}">{{trip.destination}}</a></td>
+					<td>{{trip.date_from}}</td>
+					<td>{{trip.date_to}}</td>
+					<td>{{trip.description}}</td>
+				</tr>
+			{% endfor %}
+		</table>
+	{% else %}
+		<p>You don't have any trips planned.</p>
+	{% endif %}
+
+	<hr>
+
+	<h1>Other Users' Travel Plans</h1>
+
+	{% if other_trips %}
+		<table cellpadding="10">
+			<tr>
+				<th>Name</th>
+				<th>Destination</th>
+				<th>Travel Start Date</th> 
+				<th>Travel End Date</th>
+				<th>Do you want to join?</th>
+			</tr>
+
+			{% for trip in other_trips %}
+				<tr>
+					<td>{{trip.original_planner.real_name}}</td>
+					<td><a href="travels/destination/{{trip.id}}">{{trip.destination}}</a></td>
+					<td>{{trip.date_from}}</td>
+					<td>{{trip.date_to}}</td>
+					<td><a href="travels/join/{{trip.id}}">Join</a></td>
+				</tr>
+			{% endfor %}
+		</table>
+	{% else %}
+		<p>There are no other trips planned.</p>
+	{% endif %}
+
+	<br><br><h1><a href="/travels/add">Add a trip</a><h1>
+{% endblock %}

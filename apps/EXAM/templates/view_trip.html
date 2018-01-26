@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<h1>{{trip.destination}}</h1>
+	<p>Planned by: {{trip.original_planner.real_name}}</p>
+	<p>Description: {{trip.description}}</p>
+	<p>Travel Date From: {{trip.date_from}}</p>
+	<p>Travel Date To: {{trip.date_to}}</p>
+
+	<hr>
+
+	<h1>Other users joining this trip:</h1>
+	{% for user in other_users %}
+		<p>{{user.real_name}}</p>
+	{% empty %}
+		<p>Nobody!</p>
+	{% endfor %}
+{% endblock %}
